@@ -4,6 +4,8 @@ require("express-ws")(app);
 
 const prisma = require("./prismaClient");
 
+const PORT = process.env.PORT || 9000;
+
 const cors = require("cors");
 app.use(cors());
 
@@ -19,7 +21,7 @@ app.use("/", userRouter);
 const { wsRouter } = require("./routers/ws");
 app.use("/", wsRouter);
 
-const server = app.listen(9000, () => {
+const server = app.listen(PORT, () => {
 	console.log("Yaycha API started at 9000...");
 });
 
